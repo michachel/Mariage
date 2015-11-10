@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="023e3b6c21cb4a1bbb490c6d5e72e357" Name="Diagram1">
+        <EntityTypeShape EntityType="ckaeyah101694fr24274_mariageModel.personne" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ckaeyah101694fr24274_mariageModel.etape" Width="1.5" PointX="5.625" PointY="1.125" />
+        <EntityTypeShape EntityType="ckaeyah101694fr24274_mariageModel.hebergement" Width="1.5" PointX="5.625" PointY="5" />
+        <EntityTypeShape EntityType="ckaeyah101694fr24274_mariageModel.lieu" Width="1.5" PointX="3.375" PointY="2.875" />
+        <EntityTypeShape EntityType="ckaeyah101694fr24274_mariageModel.personnes_etapes" Width="1.5" PointX="7.875" PointY="1.5" />
+        <EntityTypeShape EntityType="ckaeyah101694fr24274_mariageModel.personnes_hebergements" Width="1.5" PointX="7.875" PointY="5.25" />
+        <AssociationConnector Association="ckaeyah101694fr24274_mariageModel.fk_etape_etape_precedente" />
+        <AssociationConnector Association="ckaeyah101694fr24274_mariageModel.fk_etape_lieu" />
+        <AssociationConnector Association="ckaeyah101694fr24274_mariageModel.fk_etapes_etape" />
+        <AssociationConnector Association="ckaeyah101694fr24274_mariageModel.FK_HEBERGEMENT_LIEU" />
+        <AssociationConnector Association="ckaeyah101694fr24274_mariageModel.FK_HEBERGEMENTS_HEBERGEMENT" />
+        <AssociationConnector Association="ckaeyah101694fr24274_mariageModel.fk_personnes_personne" />
+        <AssociationConnector Association="ckaeyah101694fr24274_mariageModel.FK_PERSONNES_PERSONNE_ID" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

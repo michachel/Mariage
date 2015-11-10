@@ -1,0 +1,82 @@
+﻿@model Mariage.Models.personne
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>personne</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prenom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prenom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idConjoint)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idConjoint)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.genre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.genre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idParent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idParent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.validation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.validation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.urlPhoto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.urlPhoto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

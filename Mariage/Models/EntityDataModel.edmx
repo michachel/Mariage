@@ -1,0 +1,524 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ckaeyah101694fr24274_mariageModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="etape">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="titre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="text" />
+          <Property Name="debut" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="fin" Type="datetime" Precision="0" />
+          <Property Name="idEtapePrecedente" Type="int" />
+          <Property Name="idLieu" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="hebergement">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="titre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="text" />
+          <Property Name="idLieu" Type="int" Nullable="false" />
+          <Property Name="prix" Type="int" Nullable="false" />
+          <Property Name="estOffert" Type="tinyint" Nullable="false" />
+          <Property Name="debutOffert" Type="date" />
+          <Property Name="finOffert" Type="date" />
+        </EntityType>
+        <EntityType Name="lieu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="titre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="text" />
+          <Property Name="coordonneesMaps" Type="text" />
+          <Property Name="rue" Type="text" Nullable="false" />
+          <Property Name="code postal" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="ville" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="pays" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="telephone" Type="char" MaxLength="10" />
+          <Property Name="urlPhoto" Type="text" />
+          <Property Name="siteWeb" Type="text" />
+        </EntityType>
+        <EntityType Name="personne">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="prenom" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idConjoint" Type="int" />
+          <Property Name="genre" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="idParent" Type="int" />
+          <Property Name="validation" Type="tinyint" Nullable="false" />
+          <Property Name="urlPhoto" Type="text" />
+          <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="personnes_etapes">
+          <Key>
+            <PropertyRef Name="idPersonne" />
+            <PropertyRef Name="idEtape" />
+          </Key>
+          <Property Name="idPersonne" Type="int" Nullable="false" />
+          <Property Name="idEtape" Type="int" Nullable="false" />
+          <Property Name="fonction" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="personnes_hebergements">
+          <Key>
+            <PropertyRef Name="idPersonne" />
+            <PropertyRef Name="idHebergement" />
+          </Key>
+          <Property Name="idPersonne" Type="int" Nullable="false" />
+          <Property Name="idHebergement" Type="int" Nullable="false" />
+          <Property Name="debut" Type="date" Nullable="false" />
+          <Property Name="fin" Type="date" Nullable="false" />
+          <Property Name="numeroReservation" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_etape_etape_precedente">
+          <End Role="etape" Type="Self.etape" Multiplicity="0..1" />
+          <End Role="etape1" Type="Self.etape" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="etape">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="etape1">
+              <PropertyRef Name="idEtapePrecedente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_etape_lieu">
+          <End Role="lieu" Type="Self.lieu" Multiplicity="1" />
+          <End Role="etape" Type="Self.etape" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lieu">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="etape">
+              <PropertyRef Name="idLieu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_etapes_etape">
+          <End Role="etape" Type="Self.etape" Multiplicity="1" />
+          <End Role="personnes_etapes" Type="Self.personnes_etapes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="etape">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="personnes_etapes">
+              <PropertyRef Name="idEtape" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HEBERGEMENT_LIEU">
+          <End Role="lieu" Type="Self.lieu" Multiplicity="1" />
+          <End Role="hebergement" Type="Self.hebergement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lieu">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="hebergement">
+              <PropertyRef Name="idLieu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HEBERGEMENTS_HEBERGEMENT">
+          <End Role="hebergement" Type="Self.hebergement" Multiplicity="1" />
+          <End Role="personnes_hebergements" Type="Self.personnes_hebergements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hebergement">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="personnes_hebergements">
+              <PropertyRef Name="idHebergement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personnes_personne">
+          <End Role="personne" Type="Self.personne" Multiplicity="1" />
+          <End Role="personnes_etapes" Type="Self.personnes_etapes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="personnes_etapes">
+              <PropertyRef Name="idPersonne" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERSONNES_PERSONNE_ID">
+          <End Role="personne" Type="Self.personne" Multiplicity="1" />
+          <End Role="personnes_hebergements" Type="Self.personnes_hebergements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="personnes_hebergements">
+              <PropertyRef Name="idPersonne" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ckaeyah101694fr24274_mariageModelStoreContainer">
+          <EntitySet Name="etape" EntityType="Self.etape" Schema="ckaeyah101694fr24274_mariage" store:Type="Tables" />
+          <EntitySet Name="hebergement" EntityType="Self.hebergement" Schema="ckaeyah101694fr24274_mariage" store:Type="Tables" />
+          <EntitySet Name="lieu" EntityType="Self.lieu" Schema="ckaeyah101694fr24274_mariage" store:Type="Tables" />
+          <EntitySet Name="personne" EntityType="Self.personne" Schema="ckaeyah101694fr24274_mariage" store:Type="Tables" />
+          <EntitySet Name="personnes_etapes" EntityType="Self.personnes_etapes" Schema="ckaeyah101694fr24274_mariage" store:Type="Tables" />
+          <EntitySet Name="personnes_hebergements" EntityType="Self.personnes_hebergements" Schema="ckaeyah101694fr24274_mariage" store:Type="Tables" />
+          <AssociationSet Name="fk_etape_etape_precedente" Association="Self.fk_etape_etape_precedente">
+            <End Role="etape" EntitySet="etape" />
+            <End Role="etape1" EntitySet="etape" />
+          </AssociationSet>
+          <AssociationSet Name="fk_etape_lieu" Association="Self.fk_etape_lieu">
+            <End Role="lieu" EntitySet="lieu" />
+            <End Role="etape" EntitySet="etape" />
+          </AssociationSet>
+          <AssociationSet Name="fk_etapes_etape" Association="Self.fk_etapes_etape">
+            <End Role="etape" EntitySet="etape" />
+            <End Role="personnes_etapes" EntitySet="personnes_etapes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HEBERGEMENT_LIEU" Association="Self.FK_HEBERGEMENT_LIEU">
+            <End Role="lieu" EntitySet="lieu" />
+            <End Role="hebergement" EntitySet="hebergement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HEBERGEMENTS_HEBERGEMENT" Association="Self.FK_HEBERGEMENTS_HEBERGEMENT">
+            <End Role="hebergement" EntitySet="hebergement" />
+            <End Role="personnes_hebergements" EntitySet="personnes_hebergements" />
+          </AssociationSet>
+          <AssociationSet Name="fk_personnes_personne" Association="Self.fk_personnes_personne">
+            <End Role="personne" EntitySet="personne" />
+            <End Role="personnes_etapes" EntitySet="personnes_etapes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERSONNES_PERSONNE_ID" Association="Self.FK_PERSONNES_PERSONNE_ID">
+            <End Role="personne" EntitySet="personne" />
+            <End Role="personnes_hebergements" EntitySet="personnes_hebergements" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ckaeyah101694fr24274_mariageModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="personne">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idConjoint" Type="Int32" />
+          <Property Name="genre" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idParent" Type="Int32" />
+          <Property Name="validation" Type="SByte" Nullable="false" />
+          <Property Name="urlPhoto" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="personnes_etapes" Relationship="ckaeyah101694fr24274_mariageModel.fk_personnes_personne" FromRole="personne" ToRole="personnes_etapes" />
+          <NavigationProperty Name="personnes_hebergements" Relationship="ckaeyah101694fr24274_mariageModel.FK_PERSONNES_PERSONNE_ID" FromRole="personne" ToRole="personnes_hebergements" />
+        </EntityType>
+        <EntityContainer Name="ckaeyah101694fr24274_mariageEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="personne" EntityType="Self.personne" />
+          <EntitySet Name="etape" EntityType="ckaeyah101694fr24274_mariageModel.etape" />
+          <EntitySet Name="hebergement" EntityType="ckaeyah101694fr24274_mariageModel.hebergement" />
+          <EntitySet Name="lieu" EntityType="ckaeyah101694fr24274_mariageModel.lieu" />
+          <EntitySet Name="personnes_etapes" EntityType="ckaeyah101694fr24274_mariageModel.personnes_etapes" />
+          <EntitySet Name="personnes_hebergements" EntityType="ckaeyah101694fr24274_mariageModel.personnes_hebergements" />
+          <AssociationSet Name="fk_etape_etape_precedente" Association="ckaeyah101694fr24274_mariageModel.fk_etape_etape_precedente">
+            <End Role="etape" EntitySet="etape" />
+            <End Role="etape1" EntitySet="etape" />
+          </AssociationSet>
+          <AssociationSet Name="fk_etape_lieu" Association="ckaeyah101694fr24274_mariageModel.fk_etape_lieu">
+            <End Role="lieu" EntitySet="lieu" />
+            <End Role="etape" EntitySet="etape" />
+          </AssociationSet>
+          <AssociationSet Name="fk_etapes_etape" Association="ckaeyah101694fr24274_mariageModel.fk_etapes_etape">
+            <End Role="etape" EntitySet="etape" />
+            <End Role="personnes_etapes" EntitySet="personnes_etapes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HEBERGEMENT_LIEU" Association="ckaeyah101694fr24274_mariageModel.FK_HEBERGEMENT_LIEU">
+            <End Role="lieu" EntitySet="lieu" />
+            <End Role="hebergement" EntitySet="hebergement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HEBERGEMENTS_HEBERGEMENT" Association="ckaeyah101694fr24274_mariageModel.FK_HEBERGEMENTS_HEBERGEMENT">
+            <End Role="hebergement" EntitySet="hebergement" />
+            <End Role="personnes_hebergements" EntitySet="personnes_hebergements" />
+          </AssociationSet>
+          <AssociationSet Name="fk_personnes_personne" Association="ckaeyah101694fr24274_mariageModel.fk_personnes_personne">
+            <End Role="personne" EntitySet="personne" />
+            <End Role="personnes_etapes" EntitySet="personnes_etapes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PERSONNES_PERSONNE_ID" Association="ckaeyah101694fr24274_mariageModel.FK_PERSONNES_PERSONNE_ID">
+            <End Role="personne" EntitySet="personne" />
+            <End Role="personnes_hebergements" EntitySet="personnes_hebergements" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="etape">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="titre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="debut" Type="DateTime" Nullable="false" />
+          <Property Name="fin" Type="DateTime" />
+          <Property Name="idEtapePrecedente" Type="Int32" />
+          <Property Name="idLieu" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="etape1" Relationship="ckaeyah101694fr24274_mariageModel.fk_etape_etape_precedente" FromRole="etape" ToRole="etape1" />
+          <NavigationProperty Name="etape2" Relationship="ckaeyah101694fr24274_mariageModel.fk_etape_etape_precedente" FromRole="etape1" ToRole="etape" />
+          <NavigationProperty Name="lieu" Relationship="ckaeyah101694fr24274_mariageModel.fk_etape_lieu" FromRole="etape" ToRole="lieu" />
+          <NavigationProperty Name="personnes_etapes" Relationship="ckaeyah101694fr24274_mariageModel.fk_etapes_etape" FromRole="etape" ToRole="personnes_etapes" />
+        </EntityType>
+        <EntityType Name="hebergement">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="titre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="idLieu" Type="Int32" Nullable="false" />
+          <Property Name="prix" Type="Int32" Nullable="false" />
+          <Property Name="estOffert" Type="SByte" Nullable="false" />
+          <Property Name="debutOffert" Type="DateTime" />
+          <Property Name="finOffert" Type="DateTime" />
+          <NavigationProperty Name="lieu" Relationship="ckaeyah101694fr24274_mariageModel.FK_HEBERGEMENT_LIEU" FromRole="hebergement" ToRole="lieu" />
+          <NavigationProperty Name="personnes_hebergements" Relationship="ckaeyah101694fr24274_mariageModel.FK_HEBERGEMENTS_HEBERGEMENT" FromRole="hebergement" ToRole="personnes_hebergements" />
+        </EntityType>
+        <EntityType Name="lieu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="titre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="coordonneesMaps" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="rue" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="code_postal" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="ville" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pays" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="telephone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="urlPhoto" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="siteWeb" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="etape" Relationship="ckaeyah101694fr24274_mariageModel.fk_etape_lieu" FromRole="lieu" ToRole="etape" />
+          <NavigationProperty Name="hebergement" Relationship="ckaeyah101694fr24274_mariageModel.FK_HEBERGEMENT_LIEU" FromRole="lieu" ToRole="hebergement" />
+        </EntityType>
+        <EntityType Name="personnes_etapes">
+          <Key>
+            <PropertyRef Name="idPersonne" />
+            <PropertyRef Name="idEtape" />
+          </Key>
+          <Property Name="idPersonne" Type="Int32" Nullable="false" />
+          <Property Name="idEtape" Type="Int32" Nullable="false" />
+          <Property Name="fonction" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="etape" Relationship="ckaeyah101694fr24274_mariageModel.fk_etapes_etape" FromRole="personnes_etapes" ToRole="etape" />
+          <NavigationProperty Name="personne" Relationship="ckaeyah101694fr24274_mariageModel.fk_personnes_personne" FromRole="personnes_etapes" ToRole="personne" />
+        </EntityType>
+        <EntityType Name="personnes_hebergements">
+          <Key>
+            <PropertyRef Name="idPersonne" />
+            <PropertyRef Name="idHebergement" />
+          </Key>
+          <Property Name="idPersonne" Type="Int32" Nullable="false" />
+          <Property Name="idHebergement" Type="Int32" Nullable="false" />
+          <Property Name="debut" Type="DateTime" Nullable="false" />
+          <Property Name="fin" Type="DateTime" Nullable="false" />
+          <Property Name="numeroReservation" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="hebergement" Relationship="ckaeyah101694fr24274_mariageModel.FK_HEBERGEMENTS_HEBERGEMENT" FromRole="personnes_hebergements" ToRole="hebergement" />
+          <NavigationProperty Name="personne" Relationship="ckaeyah101694fr24274_mariageModel.FK_PERSONNES_PERSONNE_ID" FromRole="personnes_hebergements" ToRole="personne" />
+        </EntityType>
+        <Association Name="fk_etape_etape_precedente">
+          <End Type="ckaeyah101694fr24274_mariageModel.etape" Role="etape" Multiplicity="0..1" />
+          <End Type="ckaeyah101694fr24274_mariageModel.etape" Role="etape1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="etape">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="etape1">
+              <PropertyRef Name="idEtapePrecedente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_etape_lieu">
+          <End Type="ckaeyah101694fr24274_mariageModel.lieu" Role="lieu" Multiplicity="1" />
+          <End Type="ckaeyah101694fr24274_mariageModel.etape" Role="etape" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lieu">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="etape">
+              <PropertyRef Name="idLieu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_etapes_etape">
+          <End Type="ckaeyah101694fr24274_mariageModel.etape" Role="etape" Multiplicity="1" />
+          <End Type="ckaeyah101694fr24274_mariageModel.personnes_etapes" Role="personnes_etapes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="etape">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="personnes_etapes">
+              <PropertyRef Name="idEtape" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HEBERGEMENT_LIEU">
+          <End Type="ckaeyah101694fr24274_mariageModel.lieu" Role="lieu" Multiplicity="1" />
+          <End Type="ckaeyah101694fr24274_mariageModel.hebergement" Role="hebergement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lieu">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="hebergement">
+              <PropertyRef Name="idLieu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HEBERGEMENTS_HEBERGEMENT">
+          <End Type="ckaeyah101694fr24274_mariageModel.hebergement" Role="hebergement" Multiplicity="1" />
+          <End Type="ckaeyah101694fr24274_mariageModel.personnes_hebergements" Role="personnes_hebergements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hebergement">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="personnes_hebergements">
+              <PropertyRef Name="idHebergement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_personnes_personne">
+          <End Type="ckaeyah101694fr24274_mariageModel.personne" Role="personne" Multiplicity="1" />
+          <End Type="ckaeyah101694fr24274_mariageModel.personnes_etapes" Role="personnes_etapes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="personnes_etapes">
+              <PropertyRef Name="idPersonne" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PERSONNES_PERSONNE_ID">
+          <End Type="ckaeyah101694fr24274_mariageModel.personne" Role="personne" Multiplicity="1" />
+          <End Type="ckaeyah101694fr24274_mariageModel.personnes_hebergements" Role="personnes_hebergements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="personnes_hebergements">
+              <PropertyRef Name="idPersonne" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ckaeyah101694fr24274_mariageModelStoreContainer" CdmEntityContainer="ckaeyah101694fr24274_mariageEntities">
+          <EntitySetMapping Name="personne">
+            <EntityTypeMapping TypeName="ckaeyah101694fr24274_mariageModel.personne">
+              <MappingFragment StoreEntitySet="personne">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="idConjoint" ColumnName="idConjoint" />
+                <ScalarProperty Name="genre" ColumnName="genre" />
+                <ScalarProperty Name="idParent" ColumnName="idParent" />
+                <ScalarProperty Name="validation" ColumnName="validation" />
+                <ScalarProperty Name="urlPhoto" ColumnName="urlPhoto" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="etape">
+            <EntityTypeMapping TypeName="ckaeyah101694fr24274_mariageModel.etape">
+              <MappingFragment StoreEntitySet="etape">
+                <ScalarProperty Name="idLieu" ColumnName="idLieu" />
+                <ScalarProperty Name="idEtapePrecedente" ColumnName="idEtapePrecedente" />
+                <ScalarProperty Name="fin" ColumnName="fin" />
+                <ScalarProperty Name="debut" ColumnName="debut" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="titre" ColumnName="titre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hebergement">
+            <EntityTypeMapping TypeName="ckaeyah101694fr24274_mariageModel.hebergement">
+              <MappingFragment StoreEntitySet="hebergement">
+                <ScalarProperty Name="finOffert" ColumnName="finOffert" />
+                <ScalarProperty Name="debutOffert" ColumnName="debutOffert" />
+                <ScalarProperty Name="estOffert" ColumnName="estOffert" />
+                <ScalarProperty Name="prix" ColumnName="prix" />
+                <ScalarProperty Name="idLieu" ColumnName="idLieu" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="titre" ColumnName="titre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lieu">
+            <EntityTypeMapping TypeName="ckaeyah101694fr24274_mariageModel.lieu">
+              <MappingFragment StoreEntitySet="lieu">
+                <ScalarProperty Name="siteWeb" ColumnName="siteWeb" />
+                <ScalarProperty Name="urlPhoto" ColumnName="urlPhoto" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="pays" ColumnName="pays" />
+                <ScalarProperty Name="ville" ColumnName="ville" />
+                <ScalarProperty Name="code_postal" ColumnName="code postal" />
+                <ScalarProperty Name="rue" ColumnName="rue" />
+                <ScalarProperty Name="coordonneesMaps" ColumnName="coordonneesMaps" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="titre" ColumnName="titre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="personnes_etapes">
+            <EntityTypeMapping TypeName="ckaeyah101694fr24274_mariageModel.personnes_etapes">
+              <MappingFragment StoreEntitySet="personnes_etapes">
+                <ScalarProperty Name="fonction" ColumnName="fonction" />
+                <ScalarProperty Name="idEtape" ColumnName="idEtape" />
+                <ScalarProperty Name="idPersonne" ColumnName="idPersonne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="personnes_hebergements">
+            <EntityTypeMapping TypeName="ckaeyah101694fr24274_mariageModel.personnes_hebergements">
+              <MappingFragment StoreEntitySet="personnes_hebergements">
+                <ScalarProperty Name="numeroReservation" ColumnName="numeroReservation" />
+                <ScalarProperty Name="fin" ColumnName="fin" />
+                <ScalarProperty Name="debut" ColumnName="debut" />
+                <ScalarProperty Name="idHebergement" ColumnName="idHebergement" />
+                <ScalarProperty Name="idPersonne" ColumnName="idPersonne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
