@@ -38,8 +38,25 @@ namespace Mariage.Controllers
         // GET: personnes/Create
         public ActionResult Create()
         {
+            var personnes = db.personne.ToList();
+            
+            List<SelectListItem> listeConjoints = new List<SelectListItem>() { new SelectListItem() { Text = "Sans conjoint", Value = "" } };
+            List<SelectListItem> listeParents = new List<SelectListItem>() { new SelectListItem() { Text = "Sans parent", Value = "" } };
+            List<SelectListItem> listeGenres = new List<SelectListItem>() { new SelectListItem() { Text = "Femme", Value = "F" }, new SelectListItem() { Text = "Homme", Value = "H" } };
+
+            foreach (personne p in personnes)
+            {
+                listeConjoints.Add(new SelectListItem() { Text = p.getNomPrenom(), Value = p.id.ToString() });
+                listeParents.Add(new SelectListItem() { Text = p.getNomPrenom(), Value = p.id.ToString() });
+            }
+
+            ViewBag.Conjoints = listeConjoints;
+            ViewBag.Parents = listeParents;
+            ViewBag.Genres = listeGenres;
+
             return View();
         }
+        
 
         // POST: personnes/Create
         // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
@@ -70,6 +87,23 @@ namespace Mariage.Controllers
             {
                 return HttpNotFound();
             }
+
+            var personnes = db.personne.ToList();
+
+            List<SelectListItem> listeConjoints = new List<SelectListItem>() { new SelectListItem() { Text = "Sans conjoint", Value = "" } };
+            List<SelectListItem> listeParents = new List<SelectListItem>() { new SelectListItem() { Text = "Sans parent", Value = "" } };
+            List<SelectListItem> listeGenres = new List<SelectListItem>() { new SelectListItem() { Text = "Femme", Value = "F" }, new SelectListItem() { Text = "Homme", Value = "H" } };
+
+            foreach (personne p in personnes)
+            {
+                listeConjoints.Add(new SelectListItem() { Text = p.getNomPrenom(), Value = p.id.ToString() });
+                listeParents.Add(new SelectListItem() { Text = p.getNomPrenom(), Value = p.id.ToString() });
+            }
+
+            ViewBag.Conjoints = listeConjoints;
+            ViewBag.Parents = listeParents;
+            ViewBag.Genres = listeGenres;
+
             return View(personne);
         }
 

@@ -41,5 +41,15 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        $(document).ready(function () {
+            jQuery('.datetimepicker').datetimepicker({
+                lang: 'fr',
+                format: 'd/m/Y H:i',
+                pick12HourFormat: false
+            });
+})
+
+    </script>
 </body>
 </html>

@@ -21,10 +21,14 @@ namespace Mariage
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
+                      "~/Scripts/bootstrap-select.js",
+                      "~/Scripts/jquery.datetimepicker.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-select.css",
+                      "~/Content/jquery.datetimepicker.css",
                       "~/Content/site.css"));
         }
     }
