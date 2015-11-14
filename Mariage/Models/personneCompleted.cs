@@ -15,10 +15,26 @@ namespace Mariage.Models
             }
         }
 
-        public string getNomPrenom()
+        public string genreComplet
         {
-            return this.nom + " " + this.prenom;
+            get
+            {
+                return this.genre == "H" ? "Homme" : "Femme";
+            }
         }
+
+        public string nomPrenom
+        {
+            get
+            {
+                return this.nom + " " + this.prenom;
+            }
+            
+        }
+
+        public string nomPrenomConjoint { get; set; }
+        public string nomPrenomParent { get; set; }
+
 
     }
 

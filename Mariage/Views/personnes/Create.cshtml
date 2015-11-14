@@ -34,21 +34,21 @@
         <div class="form-group">
             @Html.LabelFor(model => model.idConjoint, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.idConjoint, ViewData["Conjoints"] as List<SelectListItem>, new {   @class = "selectpicker"  })
+                @Html.DropDownList("idConjoint", null, "Pas de conjoint",htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.idConjoint, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.genre, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.genre, ViewData["Genres"] as List<SelectListItem>, new {@class = "selectpicker" })
+                @Html.DropDownList("Genre", ViewData["Genres"] as List<SelectListItem>, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.genre, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.idParent, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.idParent, ViewData["Parents"] as List<SelectListItem>, new { @class = "selectpicker"  })
+                @Html.DropDownList("idParent", null, "Pas de parent", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.idParent, "", new { @class = "text-danger" })
             </div>
         </div>
