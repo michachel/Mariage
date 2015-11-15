@@ -20,5 +20,11 @@ namespace Mariage.Models
 
         [DataType(DataType.DateTime)]
         public Nullable<System.DateTime> fin { get; set; }
+
+        [Display(Name ="étape précédente")]
+        public Nullable<int> idEtapePrecedente { get; set; }
+
+        [Display(Name = "Lieu")]
+        public int idLieu { get; set; }
     }
 }
