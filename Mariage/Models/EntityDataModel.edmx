@@ -58,7 +58,7 @@
           <Property Name="idParent" Type="int" />
           <Property Name="validation" Type="tinyint" Nullable="false" />
           <Property Name="urlPhoto" Type="text" />
-          <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="personnes_etapes">
           <Key>
@@ -216,7 +216,7 @@
           <Property Name="idParent" Type="Int32" />
           <Property Name="validation" Type="SByte" Nullable="false" />
           <Property Name="urlPhoto" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="true" />
           <NavigationProperty Name="personnes_etapes" Relationship="ckaeyah101694fr24274_mariageModel.fk_personnes_personne" FromRole="personne" ToRole="personnes_etapes" />
           <NavigationProperty Name="personnes_hebergements" Relationship="ckaeyah101694fr24274_mariageModel.FK_PERSONNES_PERSONNE_ID" FromRole="personne" ToRole="personnes_hebergements" />
         </EntityType>
