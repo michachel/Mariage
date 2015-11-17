@@ -30,7 +30,7 @@
             @Html.DisplayNameFor(model => model.finOffert)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.lieu.titre)
+            @Html.DisplayNameFor(model => model.idLieu)
         </th>
         <th></th>
     </tr>
@@ -44,10 +44,10 @@
             @Html.DisplayFor(modelItem => item.description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.prix)
+            @Html.DisplayFor(modelItem => item.prixComplet)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.estOffert)
+            @Html.DisplayFor(modelItem => item.offertComplet)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.debutOffert)

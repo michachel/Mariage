@@ -211,10 +211,12 @@
       <DependentUpon>EntityDataModel.tt</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Models\hebergementCompleted.cs" />
     <Compile Include="Models\lieu.cs">
       <DependentUpon>EntityDataModel.tt</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Models\lieuCompleted.cs" />
     <Compile Include="Models\personne.cs">
       <DependentUpon>EntityDataModel.tt</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -25,6 +25,7 @@ namespace Mariage.Models
         public Nullable<int> idEtapePrecedente { get; set; }
 
         [Display(Name = "Lieu")]
+        [Required(ErrorMessage = "Obligatoire")]
         public int idLieu { get; set; }
     }
 }
