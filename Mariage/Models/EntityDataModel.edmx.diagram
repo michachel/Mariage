@@ -9,8 +9,8 @@
         <EntityTypeShape EntityType="ckaeyah101694fr24274_mariageModel.etape" Width="1.5" PointX="5.625" PointY="1.125" />
         <EntityTypeShape EntityType="ckaeyah101694fr24274_mariageModel.hebergement" Width="1.5" PointX="5.625" PointY="5" />
         <EntityTypeShape EntityType="ckaeyah101694fr24274_mariageModel.lieu" Width="1.5" PointX="3.375" PointY="2.875" />
-        <EntityTypeShape EntityType="ckaeyah101694fr24274_mariageModel.personnes_etapes" Width="1.5" PointX="7.875" PointY="1.5" />
-        <EntityTypeShape EntityType="ckaeyah101694fr24274_mariageModel.personnes_hebergements" Width="1.5" PointX="7.875" PointY="5.25" />
+        <EntityTypeShape EntityType="ckaeyah101694fr24274_mariageModel.personnes_etapes" Width="2" PointX="9.125" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ckaeyah101694fr24274_mariageModel.personnes_hebergements" Width="2.5" PointX="8.125" PointY="5.25" />
         <AssociationConnector Association="ckaeyah101694fr24274_mariageModel.fk_etape_etape_precedente" />
         <AssociationConnector Association="ckaeyah101694fr24274_mariageModel.fk_etape_lieu" />
         <AssociationConnector Association="ckaeyah101694fr24274_mariageModel.fk_etapes_etape" />
@@ -18,6 +18,7 @@
         <AssociationConnector Association="ckaeyah101694fr24274_mariageModel.FK_HEBERGEMENTS_HEBERGEMENT" />
         <AssociationConnector Association="ckaeyah101694fr24274_mariageModel.fk_personnes_personne" />
         <AssociationConnector Association="ckaeyah101694fr24274_mariageModel.FK_PERSONNES_PERSONNE_ID" />
+        <EntityTypeShape EntityType="ckaeyah101694fr24274_mariageModel.reponse" Width="1.5" PointX="0.75" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

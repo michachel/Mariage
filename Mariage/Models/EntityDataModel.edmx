@@ -80,6 +80,18 @@
           <Property Name="fin" Type="date" Nullable="false" />
           <Property Name="numeroReservation" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="reponse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="listeParticipants" Type="text" Nullable="false" />
+          <Property Name="modeTransport" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="arriveeTransport" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="dateArrivee" Type="date" />
+          <Property Name="commentaires" Type="text" />
+          <Property Name="hotelSamediSoir" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
         <Association Name="fk_etape_etape_precedente">
           <End Role="etape" Type="Self.etape" Multiplicity="0..1" />
           <End Role="etape1" Type="Self.etape" Multiplicity="*" />
@@ -171,6 +183,7 @@
           <EntitySet Name="personne" EntityType="Self.personne" Schema="ckaeyah101694fr24274_mariage" store:Type="Tables" />
           <EntitySet Name="personnes_etapes" EntityType="Self.personnes_etapes" Schema="ckaeyah101694fr24274_mariage" store:Type="Tables" />
           <EntitySet Name="personnes_hebergements" EntityType="Self.personnes_hebergements" Schema="ckaeyah101694fr24274_mariage" store:Type="Tables" />
+          <EntitySet Name="reponse" EntityType="Self.reponse" Schema="ckaeyah101694fr24274_mariage" store:Type="Tables" />
           <AssociationSet Name="fk_etape_etape_precedente" Association="Self.fk_etape_etape_precedente">
             <End Role="etape" EntitySet="etape" />
             <End Role="etape1" EntitySet="etape" />
@@ -255,6 +268,7 @@
             <End Role="personne" EntitySet="personne" />
             <End Role="personnes_hebergements" EntitySet="personnes_hebergements" />
           </AssociationSet>
+          <EntitySet Name="reponse" EntityType="ckaeyah101694fr24274_mariageModel.reponse" />
         </EntityContainer>
         <EntityType Name="etape">
           <Key>
@@ -413,6 +427,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="reponse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="listeParticipants" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="modeTransport" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="arriveeTransport" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dateArrivee" Type="DateTime" />
+          <Property Name="commentaires" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="hotelSamediSoir" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -495,6 +521,19 @@
                 <ScalarProperty Name="debut" ColumnName="debut" />
                 <ScalarProperty Name="idHebergement" ColumnName="idHebergement" />
                 <ScalarProperty Name="idPersonne" ColumnName="idPersonne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reponse">
+            <EntityTypeMapping TypeName="ckaeyah101694fr24274_mariageModel.reponse">
+              <MappingFragment StoreEntitySet="reponse">
+                <ScalarProperty Name="hotelSamediSoir" ColumnName="hotelSamediSoir" />
+                <ScalarProperty Name="commentaires" ColumnName="commentaires" />
+                <ScalarProperty Name="dateArrivee" ColumnName="dateArrivee" />
+                <ScalarProperty Name="arriveeTransport" ColumnName="arriveeTransport" />
+                <ScalarProperty Name="modeTransport" ColumnName="modeTransport" />
+                <ScalarProperty Name="listeParticipants" ColumnName="listeParticipants" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

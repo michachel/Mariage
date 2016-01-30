@@ -31,5 +31,6 @@ namespace Mariage.Models
         public virtual DbSet<lieu> lieu { get; set; }
         public virtual DbSet<personnes_etapes> personnes_etapes { get; set; }
         public virtual DbSet<personnes_hebergements> personnes_hebergements { get; set; }
+        public virtual DbSet<reponse> reponse { get; set; }
     }
 }

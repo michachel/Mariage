@@ -29,6 +29,7 @@ namespace Mariage
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-select.css",
                       "~/Content/jquery.datetimepicker.css",
+                      "~/Content/chosen.css",
                       "~/Content/site.css"));
         }
     }

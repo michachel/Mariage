@@ -1,0 +1,125 @@
+﻿@model Mariage.Models.reponse
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>reponse</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id)
+
+        <div class="form-group">
+            <p>
+                Veuillez inscrire ci-dessous la liste des participants invités qui viendront au mariage sous la forme : NOM Prénom âge (si c'est un enfant)
+                <br />
+                Chaque ligne représente une personne.
+            </p>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.listeParticipants, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.listeParticipants, 15, 150, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.listeParticipants, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <p>
+                Par quel mode de transport allez-vous arriver sur Toulouse ?
+                <br />
+                Cela nous permettra de mieux gérer la venue de chacun et de venir vous chercher si vous venez en train ou en avion.
+            </p>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.arriveeTransport, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("arriveeTransport", ViewData["arriveeTransport"] as List<SelectListItem>, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.arriveeTransport, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <p>
+                Lors du mariage il faudra aller à la mairie de Toulouse en plein centre ville (place du Capitole), puis au Sud après Muret pour accéder à la salle de réception
+                <br />
+                Pour éviter tout stress ou énervement (personne n'aime rester dans les bouchons surtout quand on ne connait pas le chemin) nous pouvons proposer pour cette journée
+                <br />
+                le transport dans un bus principal réservé qui permettra à tout le monde de pouvoir naviguer en toute quiétude dans les différentes étapes de notre mariage.
+
+            </p>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.modeTransport, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("modeTransport", ViewData["modeTransport"] as List<SelectListItem>, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.modeTransport, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p>
+                Si vous avez une estimation de la date d'arrivée, cela nous aidera à mieux préparer votre venue. Sinon ne remplissez pas ce champs.
+
+            </p>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.dateArrivee, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.dateArrivee, new { htmlAttributes = new { @class = "form-control  datetimepicker" } })
+                @Html.ValidationMessageFor(model => model.dateArrivee, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <p>
+                Après un mariage de folie, un repas où vous avez mangé comme un gros, et une soirée à danser pour perdre tout ce que vous aurez ingurgité (par mauvaise conscience de grossir certainement :D )
+                <br />
+                il faudra vous remettre de toutes ces émotions tranquillement. Nous vous offrons pour le samedi soir la nuit à l'hôtel mais vous pouvez décider de choisir un autre endroit à vos propres frais.
+
+            </p>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.hotelSamediSoir, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("hotelSamediSoir", ViewData["hotelSamediSoir"] as List<SelectListItem>, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.hotelSamediSoir, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p>
+                Vous pouvez mettre ici toutes les questions, informations, mails, etc... que vous avez envie.
+            </p>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.commentaires, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.commentaires, 15, 150, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.commentaires, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Valider modification" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

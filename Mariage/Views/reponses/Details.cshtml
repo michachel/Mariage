@@ -1,0 +1,66 @@
+﻿@model Mariage.Models.reponse
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>reponse</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.listeParticipants)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.listeParticipants)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.modeTransport)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.modeTransport)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.arriveeTransport)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.arriveeTransport)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateArrivee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateArrivee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.commentaires)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.commentaires)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hotelSamediSoir)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hotelSamediSoir)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
