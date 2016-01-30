@@ -39,16 +39,16 @@ namespace Mariage.Controllers
         public ActionResult Create()
         {
 
-            List<SelectListItem> listeModeTransport = new List<SelectListItem>() {  new SelectListItem() { Text = "Je préfère rester en voiture !", Value = "Je préfère rester en voiture !" },
-                                                                                    new SelectListItem() { Text = "Bus offert par les mariés", Value = "us offert par les mariés" },
-                                                                                    new SelectListItem() { Text = "Tout me va, tant que l'on ne m'oublie pas !", Value = "Tout me va, tant que l'on ne m'oublie pas !" } };
+            List<SelectListItem> listeModeTransport = new List<SelectListItem>() {  new SelectListItem() { Text = "Je préfère rester en voiture !", Value = "voiture" },
+                                                                                    new SelectListItem() { Text = "Bus offert par les mariés", Value = "bus" },
+                                                                                    new SelectListItem() { Text = "Tout me va, tant que l'on ne m'oublie pas !", Value = "Tout" } };
 
-            List<SelectListItem> listeArriveeTransport = new List<SelectListItem>() {  new SelectListItem() { Text = "Avion ou jet privé", Value = "Avion ou jet privé" },
+            List<SelectListItem> listeArriveeTransport = new List<SelectListItem>() {  new SelectListItem() { Text = "Avion ou jet privé", Value = "Avion" },
                                                                                     new SelectListItem() { Text = "Voiture", Value = "Voiture" },
                                                                                     new SelectListItem() { Text = "Train", Value = "Train" },
                                                                                     new SelectListItem() { Text = "Je suis sur place", Value = "Je suis sur place" } };
 
-            List<SelectListItem> listeCouchage = new List<SelectListItem>() {  new SelectListItem() { Text = "Hôtel offert par les mariés", Value = "Hôtel offert par les mariés" },
+            List<SelectListItem> listeCouchage = new List<SelectListItem>() {  new SelectListItem() { Text = "Hôtel offert par les mariés", Value = "Hôtel offert" },
                                                                                     new SelectListItem() { Text = "Hôtel non offert par les mariés", Value = "Hôtel non offert par les mariés" },
                                                                                     new SelectListItem() { Text = "Autre", Value = "Autre" } };
 
@@ -66,7 +66,7 @@ namespace Mariage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,listeParticipants,modeTransport,arriveeTransport,dateArrivee,commentaires,hotelSamediSoir")] reponse reponse)
         {
-            if (ModelState.IsValid)
+                if (ModelState.IsValid)
             {
                 db.reponse.Add(reponse);
                 db.SaveChanges();
@@ -89,22 +89,22 @@ namespace Mariage.Controllers
                 return HttpNotFound();
             }
 
-            //List<SelectListItem> listeModeTransport = new List<SelectListItem>() {  new SelectListItem() { Text = "Je préfère rester en voiture !", Value = "Je préfère rester en voiture !" },
-            //                                                                        new SelectListItem() { Text = "Bus offert par les mariés", Value = "us offert par les mariés" },
-            //                                                                        new SelectListItem() { Text = "Tout me va, tant que l'on ne m'oublie pas !", Value = "Tout me va, tant que l'on ne m'oublie pas !" } };
+            List<SelectListItem> listeModeTransport = new List<SelectListItem>() {  new SelectListItem() { Text = "Je préfère rester en voiture !", Value = "voiture" },
+                                                                                    new SelectListItem() { Text = "Bus offert par les mariés", Value = "bus" },
+                                                                                    new SelectListItem() { Text = "Tout me va, tant que l'on ne m'oublie pas !", Value = "Tout" } };
 
-            //List<SelectListItem> listeArriveeTransport = new List<SelectListItem>() {  new SelectListItem() { Text = "Avion ou jet privé", Value = "Avion ou jet privé" },
-            //                                                                        new SelectListItem() { Text = "Voiture", Value = "Voiture" },
-            //                                                                        new SelectListItem() { Text = "Train", Value = "Train" },
-            //                                                                        new SelectListItem() { Text = "Je suis sur place", Value = "Je suis sur place" } };
+            List<SelectListItem> listeArriveeTransport = new List<SelectListItem>() {  new SelectListItem() { Text = "Avion ou jet privé", Value = "Avion" },
+                                                                                    new SelectListItem() { Text = "Voiture", Value = "Voiture" },
+                                                                                    new SelectListItem() { Text = "Train", Value = "Train" },
+                                                                                    new SelectListItem() { Text = "Je suis sur place", Value = "Je suis sur place" } };
 
-            //List<SelectListItem> listeCouchage = new List<SelectListItem>() {  new SelectListItem() { Text = "Hôtel offert par les mariés", Value = "Hôtel offert par les mariés" },
-            //                                                                        new SelectListItem() { Text = "Hôtel non offert par les mariés", Value = "Hôtel non offert par les mariés" },
-            //                                                                        new SelectListItem() { Text = "Autre", Value = "Autre" } };
+            List<SelectListItem> listeCouchage = new List<SelectListItem>() {  new SelectListItem() { Text = "Hôtel offert par les mariés", Value = "Hôtel offert" },
+                                                                                    new SelectListItem() { Text = "Hôtel non offert par les mariés", Value = "Hôtel non offert par les mariés" },
+                                                                                    new SelectListItem() { Text = "Autre", Value = "Autre" } };
 
-            //ViewBag.modeTransport = listeModeTransport;
-            //ViewBag.arriveeTransport = listeArriveeTransport;
-            //ViewBag.hotelSamediSoir = listeCouchage;
+            ViewBag.modeTransport = listeModeTransport;
+            ViewBag.arriveeTransport = listeArriveeTransport;
+            ViewBag.hotelSamediSoir = listeCouchage;
 
             return View(reponse);
         }
