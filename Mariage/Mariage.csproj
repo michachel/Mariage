@@ -175,11 +175,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\etapesController.cs" />
-    <Compile Include="Controllers\hebergementsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\lieuxController.cs" />
+    <Compile Include="Controllers\HotelController.cs" />
+    <Compile Include="Controllers\MariageController.cs" />
+    <Compile Include="Controllers\PhotosController.cs" />
     <Compile Include="Controllers\reponsesController.cs" />
+    <Compile Include="Controllers\TransportController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -464,25 +465,15 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\lieux\Create.cshtml" />
-    <Content Include="Views\lieux\Delete.cshtml" />
-    <Content Include="Views\lieux\Details.cshtml" />
-    <Content Include="Views\lieux\Edit.cshtml" />
-    <Content Include="Views\lieux\Index.cshtml" />
-    <Content Include="Views\hebergements\Create.cshtml" />
-    <Content Include="Views\hebergements\Delete.cshtml" />
-    <Content Include="Views\hebergements\Details.cshtml" />
-    <Content Include="Views\hebergements\Edit.cshtml" />
-    <Content Include="Views\hebergements\Index.cshtml" />
-    <Content Include="Views\etapes\Create.cshtml" />
-    <Content Include="Views\etapes\Delete.cshtml" />
-    <Content Include="Views\etapes\Details.cshtml" />
-    <Content Include="Views\etapes\Edit.cshtml" />
-    <Content Include="Views\etapes\Index.cshtml" />
     <Content Include="Views\reponses\Create.cshtml" />
     <Content Include="Views\reponses\Details.cshtml" />
     <Content Include="Views\reponses\Edit.cshtml" />
     <Content Include="Views\reponses\Index.cshtml" />
+    <Content Include="Views\reponses\Succes.cshtml" />
+    <Content Include="Views\Hotel\Index.cshtml" />
+    <Content Include="Views\Mariage\Index.cshtml" />
+    <Content Include="Views\Photos\Index.cshtml" />
+    <Content Include="Views\Transport\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -35,6 +35,11 @@ namespace Mariage.Controllers
             return View(reponse);
         }
 
+        public ActionResult Succes()
+        {
+            return View();
+        }
+
         // GET: reponses/Create
         public ActionResult Create()
         {
@@ -70,7 +75,7 @@ namespace Mariage.Controllers
             {
                 db.reponse.Add(reponse);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("succes");
             }
 
             return View(reponse);
