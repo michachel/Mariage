@@ -53,8 +53,8 @@ namespace Mariage.Controllers
                                                                                     new SelectListItem() { Text = "Train", Value = "Train" },
                                                                                     new SelectListItem() { Text = "Je suis sur place", Value = "Je suis sur place" } };
 
-            List<SelectListItem> listeCouchage = new List<SelectListItem>() {  new SelectListItem() { Text = "Hôtel offert par les mariés", Value = "Hôtel offert" },
-                                                                                    new SelectListItem() { Text = "Hôtel non offert par les mariés", Value = "Hôtel non offert par les mariés" },
+            List<SelectListItem> listeCouchage = new List<SelectListItem>() {  new SelectListItem() { Text = "Hôtel offert par les mariés", Value = "offert" },
+                                                                                    new SelectListItem() { Text = "Hôtel non offert par les mariés", Value = "non offert" },
                                                                                     new SelectListItem() { Text = "Autre", Value = "Autre" } };
 
             ViewBag.modeTransport = listeModeTransport;
@@ -103,8 +103,8 @@ namespace Mariage.Controllers
                                                                                     new SelectListItem() { Text = "Train", Value = "Train" },
                                                                                     new SelectListItem() { Text = "Je suis sur place", Value = "Je suis sur place" } };
 
-            List<SelectListItem> listeCouchage = new List<SelectListItem>() {  new SelectListItem() { Text = "Hôtel offert par les mariés", Value = "Hôtel offert" },
-                                                                                    new SelectListItem() { Text = "Hôtel non offert par les mariés", Value = "Hôtel non offert par les mariés" },
+            List<SelectListItem> listeCouchage = new List<SelectListItem>() {  new SelectListItem() { Text = "Hôtel offert par les mariés", Value = "offert" },
+                                                                                    new SelectListItem() { Text = "Hôtel non offert par les mariés", Value = "non offert" },
                                                                                     new SelectListItem() { Text = "Autre", Value = "Autre" } };
 
             ViewBag.modeTransport = listeModeTransport;
