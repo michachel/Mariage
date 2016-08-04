@@ -180,7 +180,6 @@
     <Compile Include="Controllers\MariageController.cs" />
     <Compile Include="Controllers\PhotosController.cs" />
     <Compile Include="Controllers\reponsesController.cs" />
-    <Compile Include="Controllers\TransportController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -256,10 +255,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\capitole.jpg" />
-    <Content Include="Images\game over.jpg" />
-    <Content Include="Images\jeux.png" />
-    <Content Include="Images\transports.jpg" />
+    <Content Include="Images\hotel F1.jpg" />
+    <Content Include="Images\nettoyage.gif" />
+    <Content Include="Images\parking salle.png" />
+    <Content Include="Images\capitoleBis.jpg" />
     <Content Include="Images\nous.JPG" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
@@ -347,6 +346,10 @@
       <LastGenOutput>EntityDataModel.Designer.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EntityDeploy>
+    <Content Include="Images\pikachu.gif" />
+    <Content Include="Images\salle des illustres.jpg" />
+    <Content Include="Images\salle de reception.jpg" />
+    <Content Include="Images\parking eglise.jpg" />
     <Content Include="Models\EntityDataModel.edmx.diagram">
       <DependentUpon>EntityDataModel.edmx</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -354,6 +357,8 @@
     <Content Include="Content\bootstrap-select.css.map" />
     <Content Include="Content\bootstrap\bootstrap-chosen.less" />
     <None Include="Properties\PublishProfiles\perso.pubxml" />
+    <Content Include="Music\Pokemon Red-Blue-Yellow - Route 1 Acapella.mp3" />
+    <Content Include="Music\The Arena - Lindsey Stirling.mp3" />
     <Content Include="Scripts\bootstrap-select.js" />
     <Content Include="Scripts\bootstrap-select.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -473,7 +478,6 @@
     <Content Include="Views\Hotel\Index.cshtml" />
     <Content Include="Views\Mariage\Index.cshtml" />
     <Content Include="Views\Photos\Index.cshtml" />
-    <Content Include="Views\Transport\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
